@@ -11,7 +11,13 @@ export default function Form(){
     const[altura,setAltura]=useState(null);
     const[peso,setPeso]=useState(10);
     const[calc,setCalc]= useState(0);
-  
+    const editavel = ()=>{
+        if (calc ==1){
+            return false;
+        }
+        else
+            return true;
+    }
     function calcular(){
         setResult((peso/(altura*altura)).toFixed(2));
         setCalc(1);
@@ -35,7 +41,7 @@ export default function Form(){
             calcular();
         }
         else{
-            Alert.alert("Campo não preenchidos:","Preencha todos os campos para poder realizar o Cálculo!!");
+            Alert.alert("Campo não preenchido:","Preencha todos os campos para poder realizar o Cálculo!!");
             // console.log(altura)
         }
         // console.log(altura)
@@ -47,7 +53,8 @@ export default function Form(){
             <Text style={styles.labels}>Digite a sua Altura:</Text>
             <TextInput
                 // style={styles.input}
-                
+                editable={editavel()}
+                selectTextOnFocus={editavel()}
                 style={styles.inputs}
                 onChangeText={setAltura}
                 placeholderTextColor="#f0c0a8"
@@ -58,6 +65,8 @@ export default function Form(){
             <Text style={styles.labels}>Digite o Seu Peso:</Text>
             <TextInput
                 // style={styles.input}
+                editable={editavel()}
+                selectTextOnFocus={editavel()}
                 onChangeText={setPeso}
                 value={peso}
                 placeholder="Ex.: 80"
@@ -71,7 +80,7 @@ export default function Form(){
                 <Text style={styles.buttnText}>{
                     calc==0?
                     "Calcular IMC":
-                    "ZERAR Valores"
+                    "Zerar Valores"
                 }</Text>
             </TouchableOpacity>
             <Result valorIMC={result}/>
