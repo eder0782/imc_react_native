@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     form: {
-      marginTop:50, 
+      marginTop:10, 
       paddingTop:20,   
       alignItems: 'center',
       // justifyContent: 'center',
